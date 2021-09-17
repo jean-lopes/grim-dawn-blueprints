@@ -116,7 +116,7 @@ gdFormulas = do
 
 parse :: String -> ByteString -> Either String FormulasFile
 parse p bs = case result of
-    Left err -> Left $ printf "[%s] %s. Consumed %d bytes out of %d" (errorToStr err) p inputSize consumedSize
+    Left err -> Left $ printf "[%s] %s. Consumed %d bytes out of %d" p (errorToStr err) inputSize consumedSize
     Right fs -> Right (FormulasFile p fs)
   where
     (result, unconsumed) = runState (runExceptT gdFormulas) bs
